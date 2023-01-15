@@ -9,17 +9,14 @@
 Console.Write("Input number: ");
 int number = Convert.ToInt32(Console.ReadLine());
 
-// more simple solution will be when use FOR, 
-// but this WHILE-solution is not much larger and no less readable
-
 int count = 1;
-while(count <= number)
+while(number > 0 ? count <= number : count >= number) // if the number is greater than zero and if less
 {
     if(count % 2 == 0) 
     {
         Console.Write($"{count}, "); 
     }
-    count++;  
+    count = number > 0 ? count + 1 : count - 1;  
 }
 Console.Write($"\b\b ");
 
