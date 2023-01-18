@@ -60,7 +60,7 @@ Console.WriteLine("Посмотрим...");
 var whatIsDay = IsDayOff(number);
 
 CoolPrint(dayOfWeek[number], whatIsDay.Result ? ConsoleColor.Green : ConsoleColor.Red);
-CoolPrint($" это {whatIsDay.StringOutput}\n", whatIsDay.Item1 ? ConsoleColor.Green : ConsoleColor.Red);
+CoolPrint($" это {whatIsDay.StringOutput}\n", whatIsDay.Result ? ConsoleColor.Green : ConsoleColor.Red);
 
 //emoji
 Console.WriteLine(dayOfWeek[0]);
