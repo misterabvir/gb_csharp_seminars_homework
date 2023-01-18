@@ -21,7 +21,7 @@ string[] dayOfWeek = //little cheating
 };
 
 //Tuple stuff 
-(bool, string) IsDayOff(int numberDayOfWeek) 
+(bool Result, string StringOutput) IsDayOff(int numberDayOfWeek) 
 {
     bool res = numberDayOfWeek == 7 || numberDayOfWeek == 6;
     return (res, res ? "выходной" : "рабочий день");
@@ -59,8 +59,8 @@ Console.WriteLine("Посмотрим...");
 
 var whatIsDay = IsDayOff(number);
 
-CoolPrint(dayOfWeek[number], whatIsDay.Item1 ? ConsoleColor.Green : ConsoleColor.Red);
-CoolPrint($" это {whatIsDay.Item2}\n", whatIsDay.Item1 ? ConsoleColor.Green : ConsoleColor.Red);
+CoolPrint(dayOfWeek[number], whatIsDay.Result ? ConsoleColor.Green : ConsoleColor.Red);
+CoolPrint($" это {whatIsDay.StringOutput}\n", whatIsDay.Item1 ? ConsoleColor.Green : ConsoleColor.Red);
 
 //emoji
 Console.WriteLine(dayOfWeek[0]);
