@@ -2,6 +2,16 @@
 * Задача 29: Напишите программу, которая             *
 * задаёт массив из 8 элементов и выводит их на экран.*
 ******************************************************/
+void Print(int[] data)
+{
+    Console.Write("RESULT: [");
+    for (int i = 0; i < data.Length; i++)
+    {
+        Console.Write($"{data[i]}, ");
+    }
+    Console.WriteLine("\b\b]");
+}
+
 //FIRST solution
 int[] GetInput()
 {
@@ -39,9 +49,9 @@ int[] GetInput2()
 }
 
 //////////////////////////////////////////////////////////////////
- Console.WriteLine("FIRST sln:");
- int[] array = GetInput();
- Console.WriteLine($"RESULT: [{string.Join(", ", array)}]");
+Console.WriteLine("FIRST sln:");
+int[] array1 = GetInput();
+Print(array1);
 /*
 OUTPUT=================================>
 2,3 4, ,5,,12  52 , , , 0  8 ,,,,,, 7  5 
@@ -52,7 +62,7 @@ RESULT: [2, 3, 4, 5, 12, 52, 0, 8, 7, 5]
 //////////////////////////////////////////////////////////////////
 Console.WriteLine("SECOND sln:");
 int[] array2 = GetInput2();
-Console.WriteLine($"RESULT: [{string.Join(", ", array2)}]");
+Print(array2);
 /*
 OUTPUT=================================>
 Enter quantity of elements in array: 8
