@@ -33,8 +33,8 @@ int quantity = GetSumOfNumbersInOddPosition(array);
 Console.WriteLine($"[{string.Join(", ", array)}] --> {quantity}");
 
 //second (linq sugar)
-int[] array2 = (new int[new Random().Next(5, 10)]).Select(s => new Random().Next(1, 10)).ToArray();
-int quantity2 = array2.Where(w => array2.ToList().IndexOf(w) % 2 == 1).Sum();
+int[] array2 = (new int[new Random().Next(5, 10)]).Select(item => new Random().Next(1, 10)).ToArray();
+int quantity2 = array2.Where((item, index) => index % 2 == 1).Sum();
 Console.WriteLine($"[{string.Join(", ", array2)}] --> {quantity2}");
 
 /*
@@ -44,7 +44,7 @@ Sum of numbers in odd positions:
 [5, 2, 3, 3, 7] --> 2
 ==========================================================
 Sum of numbers in odd positions: 
-[6, 1, 2, 9, 1, 1, 7, 8, 9] --> 19
-[1, 8, 4, 4, 4, 6, 6] --> 20
+[2, 7, 1, 6, 1, 8] --> 21
+[5, 7, 8, 1, 5, 8, 7, 8] --> 24
 ==========================================================
 */

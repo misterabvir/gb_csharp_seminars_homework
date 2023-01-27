@@ -35,8 +35,8 @@ int amount = GetAmountOfEvenNumbers(array);
 Console.WriteLine($"[{string.Join(", ", array)}] --> {amount}");
 
 //second (linq sugar)
-int[] array2 = (new int[new Random().Next(5, 10)]).Select(s => new Random().Next(100, 1000)).ToArray();
-int amount2 = array2.Where(w => w % 2 == 0).Count();
+int[] array2 = (new int[new Random().Next(5, 10)]).Select(item => new Random().Next(100, 1000)).ToArray();
+int amount2 = array2.Where(item => item % 2 == 0).Count();
 Console.WriteLine($"[{string.Join(", ", array2)}] --> {amount2}");
 
 /*

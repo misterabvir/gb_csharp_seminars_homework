@@ -35,7 +35,7 @@ int difference = GetDifferenceBetweenMaxAndMin(array);
 Console.WriteLine($"[{string.Join(", ", array)}] --> {difference}");
 
 //second (linq sugar)
-int[] array2 = (new int[new Random().Next(5, 10)]).Select(s => new Random().Next(10, 100)).ToArray();
+int[] array2 = (new int[new Random().Next(5, 10)]).Select(item => new Random().Next(10, 100)).ToArray();
 int difference2 = array2.Max() - array2.Min();
 Console.WriteLine($"[{string.Join(", ", array2)}] --> {difference2}");
 
