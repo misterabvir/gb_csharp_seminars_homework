@@ -8,7 +8,7 @@
 ** Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.  *
 ***************************************************************/
 
-(int x, int y) GetInput()
+(int rows, int cols) GetInput()
 {
     int[] size = new int[0];
     do
@@ -23,7 +23,7 @@
     return (size[0], size[1]);
 }
 
-int[,] GetArray((int rows, int cols) size)
+int[,] GetRandomArray((int rows, int cols) size)
 {
     int[,] array = new int[size.rows, size.cols];
 
@@ -73,7 +73,7 @@ double[] GetColumnsAverages(int[,] matrix)
 
 ///////////////////////////////////////////////////////////////////////////
 (int rows, int cols) size = GetInput();
-int[,] numbers = GetArray(size);
+int[,] numbers = GetRandomArray(size);
 Print2DArray(numbers);
 double[] columnsAverages = GetColumnsAverages(numbers);
 PrintArray(columnsAverages);

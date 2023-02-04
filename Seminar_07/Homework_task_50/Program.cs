@@ -16,7 +16,11 @@
     do
     {
         Console.Write(message);
-        size = Console.ReadLine()?.Split(',', ' ').Where(item => int.TryParse(item, out _)).Select(item => Convert.ToInt32(item)).ToArray() ?? new int[0];
+        size = Console.ReadLine()?
+                .Split(',', ' ')
+                .Where(item => int.TryParse(item, out _))
+                .Select(item => Convert.ToInt32(item))
+                .ToArray() ?? new int[0];
     } while (size.Length < 2);
     return (size[0], size[1]);
 }
@@ -44,12 +48,12 @@ void Print(int[,] array)
     }
 }
 
-bool Search(int[,] array, (int r, int c) pos, out int res)
+bool TrySearch(int[,] matrix, (int y, int x) position, out int output)
 {
-    res = default(int); // must be assigned a value due to the modifier 'out'
-    if (pos.r >= array.GetLength(0) || pos.r < 0) return false;
-    if (pos.c >= array.GetLength(1) || pos.c < 0) return false;
-    res = array[pos.r, pos.c];
+    output = default(int); // must be assigned a value due to the modifier 'out'
+    if (position.y >= matrix.GetLength(0) || position.y < 0) return false;
+    if (position.x >= matrix.GetLength(1) || position.x < 0) return false;
+    output = matrix[position.y, position.x];
     return true;
 }
 
@@ -57,8 +61,8 @@ bool Search(int[,] array, (int r, int c) pos, out int res)
 (int rows, int cols) size = GetInput(message: "Enter amount of rows and cols separated by space: ");
 int[,] numbers = GetArray(size);
 Print(numbers);
-(int row, int col) position = GetInput(message: "Enter position (row col) separated by space: ");
-if (Search(numbers, position, out int result))
+(int row, int col) indexes = GetInput(message: "Enter position (row col) separated by space: ");
+if (TrySearch(numbers, indexes, out int result))
     Console.WriteLine($"Result is: {result}");
 else
     Console.WriteLine("There is no number in the array for this position");

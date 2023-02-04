@@ -14,7 +14,10 @@
     {
         Console.Clear();
         Console.Write("Enter amount of rows and cols separated by space: ");
-        size = Console.ReadLine()?.Split(',', ' ').Where(item => int.TryParse(item, out _)).Select(item => Convert.ToInt32(item)).ToArray() ?? new int[0];
+        size = Console.ReadLine()?.Split(',', ' ')
+            .Where(item => int.TryParse(item, out _))
+            .Select(item => Convert.ToInt32(item))
+            .ToArray() ?? new int[0];
     } while (size.Length < 2);
     return (size[0], size[1]);
 }
