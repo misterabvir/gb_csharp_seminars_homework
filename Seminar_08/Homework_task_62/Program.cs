@@ -15,7 +15,7 @@ void Print2DArray(int[,] data)
 
 void FillArray(int[,] matrix)
 {
-    (int min, int max) horisontal = (0, matrix.GetLength(1) - 1);
+    (int min, int max) horizontal = (0, matrix.GetLength(1) - 1);
     (int min, int max) vertical = (1, matrix.GetLength(0) - 1);
     (int row, int col) current = (0, 0);
     (int x, int y) step = (1, 1);
@@ -23,7 +23,7 @@ void FillArray(int[,] matrix)
     matrix[0, 0] = num++;
     while (num <= matrix.GetLength(0) * matrix.GetLength(1))
     {
-        while ((step.x > 0 && current.col < horisontal.max) || (step.x < 0 && current.col > horisontal.min))
+        while ((step.x > 0 && current.col < horizontal.max) || (step.x < 0 && current.col > horizontal.min))
         {
             current.col += step.x;
             matrix[current.row, current.col] = num++;
@@ -33,8 +33,8 @@ void FillArray(int[,] matrix)
             current.row += step.y;
             matrix[current.row, current.col] = num++;
         }
-        if (current.col == horisontal.min && step.x < 0) horisontal.min++;
-        if (current.col == horisontal.max && step.x > 0) horisontal.max--;
+        if (current.col == horizontal.min && step.x < 0) horizontal.min++;
+        if (current.col == horizontal.max && step.x > 0) horizontal.max--;
         if (current.row == vertical.max && step.y > 0) vertical.max--;
         if (current.row == vertical.min && step.y < 0) vertical.min++;
 
