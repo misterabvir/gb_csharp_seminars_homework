@@ -7,16 +7,25 @@ DemoAckermann();
 
 void DemoAckermann()
 {
-    (int M, int N) max = (3, 10);
+    (int M, int N) max = (3, 11);
     for (int n = 0; n <= max.N; n++)
     {
         for (int m = 0; m <= max.M; m++)
         {
-            Console.Write($"A({m,1}, {n,2:00}) = {Ackermann(m, n),-5}");
+            Console.Write($"A({m,1}, {n,2:#0}) = {Ackermann(m, n),-5}");
         }
         Console.WriteLine();
     }
 }
+
+/*
+ *  Ackermann–Péter  Fˉ¹
+ *            _
+ *           |   n + 1,                , m = 0
+ *  A(m, n) <    A(m - 1, 1)           , m > 0, n = 0
+ *           |_  A(m - 1, A (m, n - 1)), m > 0, n > 0
+ *          
+ */
 
 int Ackermann(int m, int n)
 {
@@ -38,4 +47,15 @@ int Ackermann(int m, int n)
  *  A(0, 08) = 9    A(1, 08) = 10   A(2, 08) = 19   A(3, 08) = 2045
  *  A(0, 09) = 10   A(1, 09) = 11   A(2, 09) = 21   A(3, 09) = 4093
  *  A(0, 10) = 11   A(1, 10) = 12   A(2, 10) = 23   A(3, 10) = 8189
+ *
+ *  - запуск функции со значениями m >= 4 приводят к немедленному stack overflow 
+ *  
+ *  - запуск функции со значениями n >= 11 при n < 3 работают, при n = 3 ->  stack overflow 
+ *  
+ *  - не помогает использование переменных типа ulong или double, stack overflow при тех же условиях
+ *  
+ *  - при использовании System.Numerics.BigInteger способного хранить целое число практически c без граничным количеством цифр
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.numerics.biginteger?view=net-7.0
+ *  stack overflow происходит уже при A(3, 9) -> что на самом деле не удивительно, внутри там крутятся переменные типов UInt32 и Int32
+ *  [at System.Numerics.BigInteger.Add(System.ReadOnlySpan`1<UInt32>, Int32, System.ReadOnlySpan`1<UInt32>, Int32)] !!!!!!!!! -> вот этот вылет
  */
